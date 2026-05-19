@@ -18,8 +18,13 @@ class EmergencyIncidentConsumer(AsyncWebsocketConsumer) :
             self.channel_name
         )
     
-    def send_emergency_incident(self,event) :
+    # def send_emergency_incident(self,event) :
+    #     await self.send(text_data=json.dumps({
+    #         "send_emergency_incident",
+    #         "data": event["data"],
+    #     }))
+    async def send_emergency_incident(self, event):
         await self.send(text_data=json.dumps({
-            "send_emergency_incident",
-            "data" event["data"]
+            "type": "send_emergency_incident",
+            "data": event["data"],
         }))

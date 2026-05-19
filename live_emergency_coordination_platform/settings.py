@@ -32,15 +32,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    "channels",
+
     'apps.Users',
     'apps.Incident',
+
     'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -71,7 +77,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'live_emergency_coordination_platform.wsgi.application'
 
 
 # Database
@@ -177,4 +182,17 @@ SIMPLE_JWT = {
     "CHECK_REVOKE_TOKEN": False,
     "REVOKE_TOKEN_CLAIM": "hash_password",
     "CHECK_USER_IS_ACTIVE": True,
+}
+
+# Realtime config
+WSGI_APPLICATION = 'live_emergency_coordination_platform.wsgi.application'
+ASGI_APPLICATION = 'live_emergency_coordination_platform.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
 }
