@@ -20,3 +20,4 @@ class EmergencyIncident(models.Model) :
 
     def __str__(self) -> str:
         return self.incident_type
+
