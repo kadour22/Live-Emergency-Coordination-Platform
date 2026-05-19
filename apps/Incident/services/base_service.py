@@ -1,7 +1,7 @@
 from ..models import EmergencyIncident
 from ..serializers import create_emergency_serializer
-
 from django.shortcuts import get_object_or_404
+
 class EmergencyIncidentService :
 
     def report_emergency_incident(self,data) :
