@@ -7,7 +7,7 @@ class user_serializer(serializers.ModelSerializer) :
         model  = User
         fields = ["username"]
 class emergency_serializer(serializers.ModelSerializer) :
-    created_by = user_serializer(read_only = True)
+    reporter = user_serializer(read_only = True)
     class Meta :
         model  = EmergencyIncident
         fields = [
@@ -18,7 +18,6 @@ class emergency_serializer(serializers.ModelSerializer) :
             "latitude",
             "longitude",
             "status",
-            "created_by",
             "created_at"
         ]
 

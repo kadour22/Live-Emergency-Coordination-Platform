@@ -20,3 +20,10 @@ class EmergencyIncidentView(APIView) :
         incidents = self.incident_data_service.report_emergency_incident_list()
         serializer = emergency_serializer(incidents, many = True)
         return Response(serializer.data, status=201)
+    
+    def post(self, request) :
+        report_data = self.incident_data_service.create_report_emergency_incident(
+            data = request.data,
+            reporter = request.user
+        )
+        return Response(report_data)
