@@ -16,7 +16,7 @@ class EmergencyIncidentService :
     def report_emergency_incident_list(self) :
         return EmergencyIncident.objects.select_related(
             "reporter"
-        )
+        ).all()
     
     def report_emergency_incident_by_id(self, incident_id):
         return get_object_or_404(
