@@ -39,14 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     "channels",
 
     'apps.Users',
     'apps.Incident',
 
     'rest_framework',
-
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'live_emergency_coordination_platform.urls'
@@ -196,3 +197,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173"
+]
