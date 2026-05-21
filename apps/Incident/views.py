@@ -13,7 +13,7 @@ class EmergencyIncidentView(APIView) :
     def get(self, request, incident_id=None) :
         
         if incident_id is not None :
-            incident = self.incident_data_service.report_emergency_incident_by_id(incident_id = incident_id)
+            incident   = self.incident_data_service.report_emergency_incident_by_id(incident_id = incident_id)
             serializer = emergency_serializer(incident, many=False)
             return Response(serializer.data, status=201)
         

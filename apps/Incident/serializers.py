@@ -7,6 +7,7 @@ class user_serializer(serializers.ModelSerializer) :
         model  = User
         fields = ["username"]
 class emergency_serializer(serializers.ModelSerializer) :
+    
     reporter = user_serializer(read_only = True)
     class Meta :
         model  = EmergencyIncident

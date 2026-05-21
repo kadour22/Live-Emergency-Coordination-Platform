@@ -1,13 +1,8 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
-class test_serializer(serializers.Serializer) :
-    
-    product_id = serializers.IntegerField()
-    
-    def validate(self, data):
-        """
-        Check that start is before finish.
-        """
-        if data['product_id'] == 1:
-            raise serializers.ValidationError("invalid ID")
-        return data
+
+class user_serialier(serializers.ModelSerializer) :
+    class Meta :
+        model  = User
+        fields = ["username","email","password"]
