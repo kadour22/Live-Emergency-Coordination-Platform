@@ -12,15 +12,13 @@ class UserService :
             "new_user_data": user_serialier(user_data).data
         }
     
-    def change_user_password(self,data,user) :
-
+    def change_user_password(self, data, user):
         serializer = ChangePasswordSerializer(data=data)
-        if serializer.is_valid() :
-            user.set_password(serializer.validatd_data["new_password"])
-            user.save()
-            return {
-                "message": "Password updated successfully"
-            }
+        serializer.is_valid(raise_exception=True)
+
+        user.set_password(serializer.validated_data["new_password"])
+        user.save()
+
         return {
-            "error":"error"
+            "message": "Password updated successfully"
         }
