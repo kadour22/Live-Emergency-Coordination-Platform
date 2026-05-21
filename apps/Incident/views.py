@@ -8,7 +8,7 @@ class EmergencyIncidentView(APIView) :
    
     permission_classes = [IsAuthenticated]
   
-   def __init__(self, *args, **kwargs) :
+    def __init__(self, *args, **kwargs) :
         super().__init__(*args, **kwargs)
         self.incident_data_service = EmergencyIncidentService()
 
