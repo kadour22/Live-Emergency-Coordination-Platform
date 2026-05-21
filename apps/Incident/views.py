@@ -1,11 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .services.base_service import EmergencyIncidentService
 from .serializers import emergency_serializer, create_emergency_serializer
 
 class EmergencyIncidentView(APIView) :
-
-    def __init__(self, *args, **kwargs) :
+   
+    permission_classes = [IsAuthenticated]
+  
+   def __init__(self, *args, **kwargs) :
         super().__init__(*args, **kwargs)
         self.incident_data_service = EmergencyIncidentService()
 
