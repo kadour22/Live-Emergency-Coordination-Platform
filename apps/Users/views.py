@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .services.user_services import UserService
 
-class CreateUserServiceView(APIView) :
-    def __init__(*args, **kwargs):
+class UserServiceView(APIView) :
+    def __init__(self, *args, **kwargs) :
         super().__init__(*args, **kwargs)
         self.user_service = UserService()
     
