@@ -12,7 +12,6 @@ class EmergencyIncidentView(APIView) :
         super().__init__(*args, **kwargs)
         self.incident_data_service = EmergencyIncidentService()
 
-
     def get(self, request, incident_id=None) :
         
         if incident_id is not None :
@@ -25,8 +24,14 @@ class EmergencyIncidentView(APIView) :
         return Response(serializer.data, status=201)
     
     def post(self, request) :
-        report_data = self.incident_data_service.create_report_emergency_incident(
+        
+        try:
+            report_data = self.incident_data_service.create_report_emergency_incident(
             data = request.data,
             reporter = request.user
         )
-        return Response(report_data)
+            return Response(report_data)
+        except Exception as error:
+            return Response({"error": str(error)}, status=400)
+        
+    

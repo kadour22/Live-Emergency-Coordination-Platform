@@ -2,6 +2,7 @@ from ..models import EmergencyIncident
 from ..serializers import create_emergency_serializer
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
+
 class EmergencyIncidentService :
 
     def create_report_emergency_incident(self,data,reporter) :
