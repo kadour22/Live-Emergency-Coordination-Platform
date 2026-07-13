@@ -1,7 +1,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-
 class EmergencyIncidentConsumer(AsyncWebsocketConsumer) :
 
     async def connect(self) :
@@ -11,7 +10,7 @@ class EmergencyIncidentConsumer(AsyncWebsocketConsumer) :
             self.group_name,
             self.channel_name
         )
-        self.accept()
+        await self.accept()
         print("websocket connected")
     async def disconnect(self, close_code ) :
         await self.channel_layer.group_discard(
