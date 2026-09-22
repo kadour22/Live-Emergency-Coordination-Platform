@@ -52,6 +52,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+
+    'apps.Incident.middleware.RequestLoggingMiddleware', # Add the custom middleware here
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -186,7 +189,7 @@ SIMPLE_JWT = {
 }
 
 # Realtime config
-WSGI_APPLICATION = 'live_emergency_coordination_platform.wsgi.application'
+# WSGI_APPLICATION = 'live_emergency_coordination_platform.wsgi.application'
 ASGI_APPLICATION = 'live_emergency_coordination_platform.asgi.application'
 
 CHANNEL_LAYERS = {

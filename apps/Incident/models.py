@@ -22,3 +22,10 @@ class EmergencyIncident(models.Model) :
     def __str__(self) -> str:
         return self.incident_type
 
+
+    # {
+    #     "incident_type": "fire",
+    #     "description": "A fire incident reported in the city center.",
+    #     "latitude": 40.7128,
+    #     "longitude": -74.0060
+    # }
