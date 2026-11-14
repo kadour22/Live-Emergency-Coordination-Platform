@@ -1,0 +1,12 @@
+
+venv/
+env/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.env
+*.sqlite3-journal
+.pytest_cache/
+.idea/
+.vscode/

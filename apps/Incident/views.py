@@ -8,25 +8,25 @@ class EmergencyIncidentView(APIView) :
    
     # permission_classes = [IsAuthenticated]
   
-    def __init__(self, *args, **kwargs) :
-        super().__init__(*args, **kwargs)
-        self.incident_data_service = EmergencyIncidentService()
+    @property
+    def service(self) :
+        return EmergencyIncidentService()
 
     def get(self, request, incident_id=None) :
         
         if incident_id is not None :
-            incident   = self.incident_data_service.get_incident(incident_id = incident_id)
+            incident   = self.service.get_incident(incident_id = incident_id)
             serializer = emergency_serializer(incident, many=False)
             return Response(serializer.data, status=201)
         
-        incidents  = self.incident_data_service.incident_list()
+        incidents  = self.service.incident_list()
         serializer = emergency_serializer(incidents, many = True)
         return Response(serializer.data, status=201)
     
     def post(self, request) :
         
         try:
-            report_data = self.incident_data_service.create_incident(
+            report_data = self.service.create_incident(
             data = request.data,
             reporter = request.user
         )
