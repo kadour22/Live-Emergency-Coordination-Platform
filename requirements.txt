@@ -21,6 +21,7 @@ packaging==26.3
 pycparser==3.11
 PyJWT==2.15.1
 pyOpenSSL==26.4.0
+python-dotenv==1.2.4
 redis==8.1.0
 service-identity==26.1.0
 sqlparse==0.6.0
